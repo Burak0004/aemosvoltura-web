@@ -23,11 +23,21 @@ export default defineConfig({
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },
+
+  // root'umuz artık client klasörü
   root: path.resolve(import.meta.dirname, "client"),
+
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    // Client içindeki dist klasörüne yazalım
+    outDir: path.resolve(import.meta.dirname, "client", "dist"),
     emptyOutDir: true,
+
+    // Rollup’a entry noktayı doğru verelim
+    rollupOptions: {
+      input: path.resolve(import.meta.dirname, "client", "index.html"),
+    },
   },
+
   server: {
     fs: {
       strict: true,

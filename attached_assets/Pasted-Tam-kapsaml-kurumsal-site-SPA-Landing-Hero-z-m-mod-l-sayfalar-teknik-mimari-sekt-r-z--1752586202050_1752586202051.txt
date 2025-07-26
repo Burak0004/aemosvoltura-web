@@ -1,0 +1,79 @@
+Tam kapsamlı kurumsal site (SPA)
+- Landing/Hero, çözüm & modül sayfaları, teknik mimari, sektör çözümleri, başarı hikâyeleri, blog/knowledge‑center, fiyatlandırma, ekip‑hakkımızda, iletişim/demo formu.
+- Kullanıcı portalı dahil değil (sadece tanıtım ve lead‑generation).
+
+2 — Hedef Kitle
+Türk OSB’leri ve enerji‑yoğun sanayi tesisleri (çimento, demir‑çelik, gıda, kimya).
+
+Karar vericiler: Enerji yöneticisi, Bakım müdürü, CFO, ESG/CBAM sorumlusu.
+
+İkincil segment: Yatırımcılar, regülatörler, entegrasyon ortakları.
+
+3 — Vurgulanacak Başlıca Özellikler
+Modül	Değer Cümlesi (≈ 70 karakter)
+Gerçek‑Zamanlı Optimizasyon	Saniyelik IoT verisiyle %15’e varan kayıp düşüşü
+AI Destekli Dijital İkiz	%95+ tahmin doğruluğu, arıza & planlama optimizasyonu
+Blokzincir P2P Pazaryeri	≤ 30 sn’de fazla üretim → talep eşleşmesi
+Reaktif Güç Ceza Önleme	Yıllık reaktif ceza faturasını %70’e kadar azaltır
+CBAM/ESG Raporları	ISO 14064 & CBAM çıktıları tek tıkla PDF
+
+4 — Tasarım ve Marka Rehberi
+Renkler: Voltura Green #0CAF60 (primary), Voltura Blue #0071E3 (accent), gri skala.
+
+Tipografi: Inter, 1.25–1.5 rem line‑height.
+
+Stil: Endüstriyel‑modern; glassmorphism kartlar, hafif gradient arka planlar, Framer‑Motion mikro‑animasyonlar.
+
+Görseller: SVG/Lottie + React‑Three‑Fiber mock‑up’lar (opsiyonel).
+
+Ton: Güven veren, teknik; metin madenciliğine uygun net başlıklar (keyword yoğunluğu < %2).
+
+5 — Kimlik Doğrulama
+Yok. Site %100 herkese açık.
+
+Demo formu → backend webhook (e‑posta/CRM) + reCAPTCHA v3.
+
+6 — Sitemap (Özet)
+bash
+Kopyala
+Düzenle
+/                 Landing (Hero, FeatureGrid, CTA)
+/platform         Teknik Mimari
+/solutions/:id    Sektör bazlı çözümler
+/modules/:slug    Ürün modülleri (AI Twin, P2P vs.)
+/case-studies     Başarı hikâyeleri
+/blog             MDX‑tabanlı bilgi merkezi
+/pricing          SaaS & donanım bundle
+/about            Ekip & yatırımcı ilişkileri
+/contact          Demo formu, lokasyon
+/status           Sistem durumu (opsiyonel)
+7 — Teknik Yığın
+Frontend: React 18 + Vite + TailwindCSS + React‑Router v6 + TanStack Query.
+
+i18n: TR (varsayılan) & en‑US fallback.
+
+Backend (light): Node/Express (demo form webhook + mailer).
+
+CI/CD: GitHub Actions → Replit preview → Cloudflare Pages production.
+
+Analitik: clickhouse‑web‑analytics snippet (events: demo_request, module_view, form_submit).
+
+SEO: React‑Helmet‑Async, OpenGraph & JSON‑LD (Product, FAQ, Breadcrumb).
+
+8 — Uygulama Takvimi (4 × 2 hafta Sprint)
+Sprint	Teslimat
+0. Kurulum	Repo, Vite, Tailwind, eslint‑prettier, Voltura teması
+1. Temel Sayfalar	Landing, FeatureGrid, Contact + demo form, meta/OG, analitik
+2. Derin İçerik	/platform, /modules/, /solutions/, blog altyapısı & RSS
+3. Performans & SEO	Lighthouse 90+, structured data, i18n, Cloudflare Pages prod
+
+Replit Prompt Başlangıcı (Sprint 0):
+
+sql
+Kopyala
+Düzenle
+Create a new Vite‑React project with TailwindCSS, eslint‑prettier, react‑router‑dom, @tanstack/react‑query, Inter font, Voltura color palette (#0CAF60 & #0071E3).  
+Folder structure: src/components, pages, layout, hooks, assets, data.  
+Set up absolute imports with @/.  
+Provide main.jsx & App.jsx with routes for '/', '/platform', '/modules/:slug', '/solutions/:id', '/blog', '/pricing', '/about', '/contact'.  
+Bu kurulumu tamamladığında dizin çıktısını paylaş; birlikte bileşenleri inşa et

@@ -1,0 +1,44 @@
+🎨 Profesyonel UI/UX Gemini CLI Promptları
+🌟 Genel Tasarım Modernizasyonu
+Mevcut web sitemin tasarımını Apple, Tesla, Stripe gibi dünyaca ünlü sitelerin seviyesine çıkar. Modern glassmorphism efektleri, subtle shadows, soft gradients ve premium typography ekle. Dark mode desteği ekle. Tüm elementlerde smooth transitions ve micro-animations kullan. Color palette olarak modern neutral tonlar (grays, whites) ve accent color olarak premium mavi/yeşil tonları kullan. Content hiç değişmesin, sadece görsel tasarım upgrade edilsin.
+✨ Geçiş Efektleri ve Animasyonlar
+Web siteme premium geçiş efektleri ekle: 
+- Sayfa geçişlerinde fade-in/slide-up animasyonları
+- Hover efektlerinde scale(1.05) ve box-shadow değişimleri  
+- Button hover'larda gradient shift ve glow efektleri
+- Scroll triggered animations (elementi görünce fade-in)
+- Loading states için skeleton screens
+- Smooth parallax effects header'da
+- Elements için staggered animations
+Tüm animasyonlar 300-400ms duration, ease-out timing kullanansın. Performance optimized olsun.
+🎯 Buton ve İnteraktif Elementler
+Sitemdeki tüm butonları premium hale getir:
+- Primary buttons: Gradient backgrounds, hover'da glow effect, subtle shadows
+- Secondary buttons: Border style, hover'da background fill
+- CTA buttons: Pulse animation, gradient shift, prominent shadows
+- Icon buttons: Scale effect, background circle expand
+- Form inputs: Focus states ile glow borders, floating labels
+- Dropdown menüler: Smooth slide-down, backdrop blur
+- Card elements: Hover'da lift effect (translateY(-4px))
+Airbnb, Notion, Linear gibi premium sitelerdeki button styles'ı referans al.
+🪞 Yansıma ve Depth Efektleri
+Web siteme modern depth ve reflection efektleri ekle:
+- Card elementlerde subtle reflections ve soft drop shadows
+- Glassmorphism effects: backdrop-filter blur, semi-transparent backgrounds
+- Layered shadows (multiple box-shadows) depth illusion için
+- Image elements için subtle reflection effects
+- Hero section'da depth of field blur effect
+- Navigation bar için frosted glass effect
+- Modal dialog'larda backdrop blur ve elegant shadows
+Instagram, Behance, Dribbble tarzında modern depth efektleri kullan.
+🎨 Modern Typography ve Layout
+Typography sistemini premium hale getir:
+- Font hierarchy: Display/Heading/Body/Caption sizes tanımla
+- Inter, SF Pro Display gibi modern system fonts kullan
+- Letter-spacing optimizasyonu
+- Line-height improvements (1.4-1.6)
+- Responsive typography (fluid font sizes)
+- Text animations: Typewriter, fade-in per word
+- Reading experience optimizations
+- White space management premium brands gibi
+Medium, Substack, Stripe gibi sitelerin typography sistemini referans al.

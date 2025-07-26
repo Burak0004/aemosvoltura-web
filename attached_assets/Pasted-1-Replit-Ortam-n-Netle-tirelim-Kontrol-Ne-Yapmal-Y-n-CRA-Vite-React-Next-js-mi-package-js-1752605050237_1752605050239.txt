@@ -1,0 +1,65 @@
+1 · Replit Ortamını Netleştirelim
+Kontrol	Ne Yapmalı?
+Yığın	CRA, Vite‑React, Next.js mi? (package.json’daki scripts satırından anlaşılır)
+Dizin Yapısı	src/, public/, pages/ klasörlerini doğrula.
+Node Sürümü	Replit genelde 18 LTS kullanıyor; replit.nix veya .replit dosyasında görebiliriz.
+
+→ Replit linkini paylaştığınız anda kod ağacını kontrol eder, ilgili yerlere patch atarım.
+
+2 · Gerekli Paketler
+bash
+Kopyala
+Düzenle
+npm i lottie-react
+# Next.js ise lottie-react@next sürümü sorun çıkarmaz
+Eğer TypeScript kullanıyorsanız:
+npm i -D @types/lottie-web yeterli.
+
+3 · Animasyon Dosyalarını Ekle
+.dotLottie veya .json dosyalarını public/lotties/ altına koyun (meselâ wind-farm.json, solar-track.json).
+
+Recolor gerekiyorsa Lottie Editor’dan Voltura mavisi (#64FFDA) ile yeniden dışa aktarın.
+
+4 · Hero Bileşenine Katman Ekleyin
+src/components/AnimatedBackground.jsx
+
+jsx
+Kopyala
+Düzenle
+import Lottie from "lottie-react";
+import windFarm from "/public/lotties/wind-farm.json";
+import solarTrack from "/public/lotties/solar-track.json";
+
+export default function AnimatedBackground() {
+  return (
+    <>
+      <Lottie animationData={windFarm} loop autoplay
+              className=\"absolute inset-0 w-full h-full object-cover opacity-25\" />
+
+      <Lottie animationData={solarTrack} loop autoplay
+              className=\"absolute inset-0 w-full h-full object-cover opacity-30 scale-110\" />
+    </>
+  );
+}
+Sonra Hero JSX’inde:
+
+jsx
+Kopyala
+Düzenle
+<section className=\"relative ...\">
+  <AnimatedBackground />
+  {/* H1, H2, CTA */}
+</section>
+5 · Performans & Erişilebilirlik
+Önlem	Kod / Ayar
+Lazy Load	<Lottie ... rendererSettings={{ progressiveLoad: true }} />
+Reduced Motion	@media (prefers-reduced-motion: reduce) { .lottie { display:none; } }
+CLS	Arka plan konteynerine sabit yükseklik (min-h-[800px]) verin.
+
+6 · Test ve Deploy
+Replit’te “Run” butonuna basın, loglarda hata yoksa preview penceresi açılır.
+
+Lighthouse panelinden LCP & CLS değerlerini kontrol edin (Replit “Webview tools” menüsünde).
+
+Her şey temizse Version Control sekmesinden Commit → Push yapın.
+

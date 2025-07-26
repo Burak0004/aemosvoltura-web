@@ -1,0 +1,43 @@
+import Navbar from "@/components/layout/navbar-new"; // Güncellenmiş navbar
+import { ChevronDown } from "lucide-react";
+import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
+import { Reveal } from "@/utils/scrollAnimations";
+
+export default function Hero() {
+const { scrollToSection } = useSmoothScroll();
+
+return (
+<section className="relative w-full h-[820px] overflow-hidden">
+      {/* 1. ADIM: NAVBAR'I BURAYA EKLEDİK */}
+<Navbar />
+
+      {/* (OPSİYONEL AMA ÖNERİLİR) MENÜ OKUNABİLİRLİĞİ İÇİN GRADYAN */}
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/60 to-transparent z-20 pointer-events-none"></div>
+
+      {/* 2. ADIM: VİDEO VE DİĞER İÇERİKLER OLDUĞU GİBİ KALIYOR */}
+<video
+autoPlay
+muted
+loop
+playsInline
+className="absolute inset-0 w-full h-full object-cover"
+>
+<source src="/hero-bg.mp4" type="video/mp4" />
+</video>
+
+{/* Koyu overlay (okunabilirlik) */}
+<div className="absolute inset-0 bg-[#0A192F]/70 backdrop-blur-sm"></div>
+
+{/* Öne gelen UI (H1 - CTA) - Bu kısım aynı kalıyor */}
+<div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+{/* ... Bu bölümün geri kalanı aynı şekilde devam ediyor ... */}
+        {/* ... İçeriğinizi buraya olduğu gibi bırakın ... */}
+</div>
+
+{/* Scroll indicator - Bu kısım da aynı kalıyor */}
+<div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-aemos-gray animate-bounce">
+<ChevronDown className="w-6 h-6" />
+</div>
+</section>
+);
+}

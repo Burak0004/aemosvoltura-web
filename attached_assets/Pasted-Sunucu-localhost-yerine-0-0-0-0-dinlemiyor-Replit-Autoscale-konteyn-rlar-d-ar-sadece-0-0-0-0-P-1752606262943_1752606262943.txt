@@ -1,0 +1,82 @@
+Sunucu localhost yerine 0.0.0.0 dinlemiyor → Replit Autoscale konteynırları dışarı sadece 0.0.0.0:$PORT’tan yayınlanır.
+
+SESSION_SECRET env değişkeni eksik → Projede bir oturum kütüphanesi (express‑session, next‑auth, vs.) production’da bu değeri zorunlu kılıyor.
+
+start script’i eksik veya yanlış → Replit, package.json’daki npm run start komutunu çağırıyor.
+
+Adım adım çözüm
+1. Sunucuyu doğru host & port’ta dinlet
+CRA ise ayrı sunucuya gerek yok; statik build’i “serve” ile yayınlarız (aşağıya bak).
+
+Express/Next custom server kullanıyorsan:
+
+js
+Kopyala
+Düzenle
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log('Server running on port', PORT);
+});
+2. SESSION_SECRET ihtiyacını kapat ya da tanımla
+Eğer oturum yönetimine ihtiyacın yoksa (landing page’de büyük olasılıkla yok):
+
+app.use(session({ /* … */ })) satırını production’da koşmayacak şekilde koşul ekle:
+
+js
+Kopyala
+Düzenle
+if (process.env.NODE_ENV !== 'production') {
+  app.use(session({ secret: 'dev', … }));
+}
+İhtiyacın varsa:
+
+Replit pencerenin sağındaki Secrets (Lock simgesi)’ne git
+
+KEY: SESSION_SECRET VALUE: rastgele uzun bir karakter dizisi ekle
+
+Deploy ayarlarında “Include Secrets” onaylı olsun.
+
+3. package.json — start & build script’leri netleştir
+Yalnızca Frontend (CRA/Vite) barındıracaksan:
+
+json
+Kopyala
+Düzenle
+{
+  "scripts": {
+    "dev": "react-scripts start",      // veya vite
+    "build": "react-scripts build",
+    "start": "serve -s build -l 0.0.0.0:$PORT"
+  },
+  "dependencies": {
+    "serve": "^15.0.1",                // prod’da statik servis
+    "react": "...", "react-dom": "..."
+  }
+}
+serve paketini prod bağımlılığı olarak ekle (Autoscale image’ı yalnızca prod deps kurar):
+
+bash
+Kopyala
+Düzenle
+npm i serve
+Next.js kullanıyorsan:
+
+json
+Kopyala
+Düzenle
+"scripts": {
+  "build": "next build",
+  "start": "next start -p $PORT -H 0.0.0.0"
+}
+4. Tekrar deploy et
+Secrets panelinde (varsa) SESSION_SECRET ekle.
+
+Deploy ayarlarında:
+
+Install: npm install
+
+Build: npm run build
+
+Start: npm run start
+
+Autoscale → Redeploy.

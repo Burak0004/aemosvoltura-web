@@ -1,0 +1,15 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Aqua diamond icon -->
+  <path d="M8 30 L25 10 L42 30 L25 50 Z" fill="#64FFDA" stroke="none"/>
+  <path d="M18 30 L25 20 L32 30 L25 40 Z" fill="white" stroke="none"/>
+  
+  <!-- AEMOS text -->
+  <text x="55" y="32" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#0A192F">
+    AEMOS
+  </text>
+  
+  <!-- VOLTURA text -->
+  <text x="55" y="50" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#0A192F">
+    VOLTURA
+  </text>
+</svg>

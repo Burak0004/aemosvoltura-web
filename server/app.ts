@@ -1,5 +1,4 @@
-// server/app.ts
-import express, { Request, Response, NextFunction } from "express";
+import express from "express";
 import session from "express-session";
 import MemoryStore from "memorystore";
 import { registerRoutes } from "./routes";
@@ -56,7 +55,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes ve static servisi ekle
 await registerRoutes(app);
 serveStatic(app);
 
